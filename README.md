@@ -1,9 +1,13 @@
 ### 技术栈
 
 > Vue3
+>
 > ElementPlus
+>
 > TypeScript
+>
 > Vite
+>
 > Pinia
 
 ### 删除不必要的组件和方法
@@ -14,5 +18,5 @@
 ### 新增了一些组件如：上传组件`Upload`、导入组件`ImportUpload`、表格展示组件`ShowTable`等
 
 ### 增加了暗黑模式
-[暗黑模式](./src/assets/images/project1.png)
+![暗黑模式](./src/assets/images/project1.png)
 
