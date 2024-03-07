@@ -1,9 +1,6 @@
 import { createApp } from 'vue';
 
-import Cookies from 'js-cookie';
-
 import ElementPlus from 'element-plus';
-import zhCn from 'element-plus/es/locale/lang/zh-cn';
 // import en from 'element-plus/dist/locale/en.mjs';
 import 'element-plus/theme-chalk/dark/css-vars.css';
 // import 'element-plus/dist/index.css';
@@ -14,6 +11,7 @@ import '@/assets/styles/index.scss'; // global css
 // import 'element-plus/es/components/message-box/style/css';
 // import 'element-plus/es/components/notification/style/css';
 // import 'element-plus/es/components/loading/style/css';
+import i18n from '@/lang';
 
 // tailwindcss
 import './index.css';
@@ -76,14 +74,14 @@ app.use(store);
 app.use(plugins);
 app.use(elementIcons);
 app.use(VueCropper);
+app.use(i18n);
 
 directive(app);
 
 // 使用element-plus 并且设置全局的大小
 app.use(ElementPlus, {
-    locale: zhCn,
     // 支持 large、default、small
-    size: (Cookies.get('size') as Size) || 'default',
+    size: (localStorage.getItem('size') as Size) || 'default',
 });
 
 app.mount('#app');

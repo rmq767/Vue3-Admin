@@ -31,6 +31,9 @@
                 <el-tooltip content="布局大小" effect="dark" placement="bottom">
                     <size-select id="size-select" class="right-menu-item hover-effect" />
                 </el-tooltip>
+                <el-tooltip content="国际化" effect="dark" placement="bottom">
+                    <lang-select id="lang-select" class="right-menu-item hover-effect" />
+                </el-tooltip>
             </template>
             <div class="avatar-container">
                 <el-dropdown @command="handleCommand" class="right-menu-item hover-effect" trigger="click">
@@ -64,6 +67,7 @@ import TopNav from '@/components/TopNav/index.vue';
 import Hamburger from '@/components/Hamburger/index.vue';
 import Screenfull from '@/components/Screenfull/index.vue';
 import SizeSelect from '@/components/SizeSelect/index.vue';
+import LangSelect from '@/components/LangSelect/index.vue';
 import HeaderSearch from '@/components/HeaderSearch/index.vue';
 import useAppStore from '@/store/modules/app';
 import useUserStore from '@/store/modules/user';

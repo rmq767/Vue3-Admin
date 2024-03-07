@@ -1,5 +1,5 @@
 <template>
-    <el-config-provider :size="size" :locale="locale" :z-index="3000">
+    <el-config-provider :size="size" :locale="localeLang" :z-index="3000">
         <router-view />
     </el-config-provider>
 </template>
@@ -18,7 +18,9 @@ const size = computed(() => {
 const lang = computed(() => {
     return useAppStore().lang;
 });
-const locale = computed(() => (lang.value === 'zh-cn' ? zhCn : en));
+const localeLang = computed(() => {
+    return lang.value === 'zh-cn' ? zhCn : en;
+});
 
 onMounted(() => {
     nextTick(() => {

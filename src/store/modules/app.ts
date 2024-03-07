@@ -10,8 +10,8 @@ const useAppStore = defineStore('app', {
             hide: false,
         },
         device: 'desktop',
-        size: (Cookies.get('size') as Size) || 'default',
-        lang: (Cookies.get('lang') as Lang) || 'zh-cn',
+        size: (localStorage.getItem('size') as Size) || 'default',
+        lang: (localStorage.getItem('lang') as Lang) || 'zh-cn',
     }),
     actions: {
         toggleSideBar(withoutAnimation?: boolean) {
@@ -36,11 +36,11 @@ const useAppStore = defineStore('app', {
         },
         setSize(size: Size) {
             this.size = size;
-            Cookies.set('size', size);
+            localStorage.setItem('size', size);
         },
         setLang(lang: Lang) {
             this.lang = lang;
-            Cookies.set('lang', lang);
+            localStorage.setItem('lang', lang);
         },
         toggleSideBarHide(status: boolean) {
             this.sidebar.hide = status;

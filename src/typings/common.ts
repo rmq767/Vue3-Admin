@@ -15,9 +15,10 @@ export interface TableColumn {
     label: string;
     width?: string;
     template?: TableColumnTemplate | string;
+    slot?: string;
 }
 
-export type TableColumnTemplate = 'date' | 'status' | 'progress';
+export type TableColumnTemplate = 'date' | 'progress';
 
 /**
  * @description 表单类型
@@ -45,6 +46,7 @@ export interface SearchComponentConfig {
     type: SearchComponentConfigType;
     placeholder?: string;
     option?: OptionType[];
+    timeResult?: [string, string]; //用于时间范围选择 返回对应的开始结束字段
 }
 type SearchComponentConfigType = 'select' | 'input' | 'year' | 'monthrange' | 'daterange' | 'datetimerange';
 

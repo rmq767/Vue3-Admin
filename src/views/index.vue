@@ -14,19 +14,20 @@ import { ref } from 'vue';
 
 const serachConfig = ref<SearchComponentConfig[]>([
     {
-        label: '申请日期',
+        label: 'home.applicationDate',
         prop: 'publishTime',
         type: 'daterange',
+        timeResult: ['startDate', 'endDate'],
     },
     {
         type: 'select',
-        label: '状态',
+        label: 'home.status',
         prop: 'processStatus',
         option: [],
     },
     {
         type: 'input',
-        label: '模糊查询',
+        label: 'home.fuzzyQuery',
         prop: 'queryCondition',
     },
 ]);

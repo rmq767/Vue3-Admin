@@ -1,15 +1,15 @@
 <template>
     <div>
-        <el-dropdown trigger="click" @command="handleSetSize">
+        <el-dropdown trigger="click" @command="handleSetLang">
             <div class="size-icon--style">
-                <svg-icon class-name="size-icon" icon-class="size" />
+                <svg-icon class-name="lang-icon" icon-class="lang" />
             </div>
             <template #dropdown>
                 <el-dropdown-menu>
                     <el-dropdown-item
-                        v-for="item of sizeOptions"
+                        v-for="item of langOptions"
                         :key="item.value"
-                        :disabled="size === item.value"
+                        :disabled="lang === item.value"
                         :command="item.value"
                     >
                         {{ item.label }}
@@ -23,28 +23,30 @@
 <script setup lang="ts">
 import useAppStore from '@/store/modules/app';
 import { computed, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+const { locale } = useI18n();
 
 const appStore = useAppStore();
-const size = computed(() => appStore.size);
+const lang = computed(() => appStore.lang);
 // const route = useRoute();
 // const router = useRouter();
 // const { proxy } = getCurrentInstance() as ComponentInternalInstance;
-const sizeOptions = ref([
-    { label: '较大', value: 'large' },
-    { label: '默认', value: 'default' },
-    { label: '稍小', value: 'small' },
+const langOptions = ref([
+    { label: '中文', value: 'zh-cn' },
+    { label: 'English', value: 'en' },
 ]);
 
-function handleSetSize(size: any) {
+function handleSetLang(lang: any) {
     // proxy!.$modal.loading('正在设置布局大小，请稍候...');
-    appStore.setSize(size);
+    appStore.setLang(lang);
+    locale.value = lang;
     // setTimeout('window.location.reload()', 1000);
 }
 </script>
 
 <style lang="scss" scoped>
 .size-icon--style {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 50px;
 }
 </style>
