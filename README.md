@@ -21,4 +21,3 @@
 ![暗黑模式](./src/assets/images/project1.png)
 
 ### i18n分支 增加了国际化功能
-![国际化](./src/assets/images/project2.png)
