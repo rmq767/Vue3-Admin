@@ -20,3 +20,5 @@
 ### 增加了暗黑模式
 ![暗黑模式](./src/assets/images/project1.png)
 
+### 新增了国际化
+![国际化](./src/assets/images/project2.png)
