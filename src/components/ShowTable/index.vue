@@ -13,10 +13,6 @@
             <template v-if="col.template === 'date'" #default="{ row }">{{
                 parseTime(row[col.prop], DateTimeFormat.DATE)
             }}</template>
-            <!-- 处理状态 例如el-tag对应不同颜色 -->
-            <template v-else-if="col.template === 'status'" #default="{ row }">
-                <slot name="status" :row="row"></slot>
-            </template>
             <!-- 处理进度 -->
             <template v-else-if="col.template === 'progress'" #default="{ row }">
                 <el-progress
@@ -27,8 +23,8 @@
                 />
             </template>
             <!-- 自定义，其他特殊处理 -->
-            <template v-else-if="col.template && col.template.includes('custom-')" #default="{ row }">
-                <slot :name="col.template.split('custom-')[1]" :row="row"></slot>
+            <template v-else-if="col.slot" #default="{ row }">
+                <slot :name="col.slot" :row="row"></slot>
             </template>
         </el-table-column>
 

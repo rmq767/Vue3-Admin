@@ -2,7 +2,6 @@
     <div class="app-container home">
         <Search :config="serachConfig" @search="search"></Search>
         <el-button type="primary" @click="visible = true">open</el-button>
-
         <my-dialog v-model="visible" title="title"></my-dialog>
     </div>
 </template>
@@ -17,6 +16,7 @@ const serachConfig = ref<SearchComponentConfig[]>([
         label: '申请日期',
         prop: 'publishTime',
         type: 'daterange',
+        timeResult: ['startDate', 'endDate'],
     },
     {
         type: 'select',

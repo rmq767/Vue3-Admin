@@ -17,7 +17,7 @@ export interface TableColumn {
     template?: TableColumnTemplate | string;
 }
 
-export type TableColumnTemplate = 'date' | 'status' | 'progress';
+export type TableColumnTemplate = 'date' | 'progress';
 
 /**
  * @description 表单类型
@@ -45,6 +45,7 @@ export interface SearchComponentConfig {
     type: SearchComponentConfigType;
     placeholder?: string;
     option?: OptionType[];
+    timeResult?: [string, string];
 }
 type SearchComponentConfigType = 'select' | 'input' | 'year' | 'monthrange' | 'daterange' | 'datetimerange';
 

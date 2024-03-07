@@ -56,29 +56,26 @@ const props = defineProps<{ config: SearchComponentConfig[] }>();
 const searchForm = ref<any>({});
 const searchFormRef = ref<FormInstance>();
 const emits = defineEmits(['search']);
-/**
- * @description 格式化日期
- */
-// const getFormat = (type: string) => {
-//     let formatType = 'YYYY-MM-DD';
-//     switch (type) {
-//         case 'datetimerange':
-//             formatType = 'YYYY-MM-DD HH:mm:ss';
-//             break;
-//         case 'year':
-//             formatType = 'YYYY';
-//             break;
-//         case 'monthrange':
-//             formatType = 'YYYY-MM';
-//             break;
-//         default:
-//             formatType = 'YYYY-MM-DD';
-//             break;
-//     }
-//     return formatType;
-// };
 const search = () => {
-    emits('search', searchForm);
+    // 复制一份searchForm，不改变源数据
+    const params = {
+        ...searchForm.value,
+    };
+    // 遍历props.config，如果item.timeResult存在，且item.type包含range，则进行处理
+    props.config.forEach(item => {
+        if (item.timeResult && item.type.includes('range')) {
+            if (Array.isArray(item.timeResult)) {
+                if (params[item.prop]) {
+                    // 设置params[item.timeResult[0]]和params[item.timeResult[1]]的值
+                    Reflect.set(params, item.timeResult[0], params[item.prop][0]);
+                    Reflect.set(params, item.timeResult[1], params[item.prop][1]);
+                    // 删除params[item.prop]
+                    Reflect.deleteProperty(params, item.prop);
+                }
+            }
+        }
+    });
+    emits('search', params);
 };
 const reset = () => {
     searchFormRef.value?.resetFields();
